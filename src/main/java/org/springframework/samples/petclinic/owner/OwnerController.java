@@ -15,6 +15,7 @@
  */
 package org.springframework.samples.petclinic.owner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.visit.VisitRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,10 +45,35 @@ class OwnerController {
     private VisitRepository visits;
 
 
-    public OwnerController(OwnerRepository clinicService, VisitRepository visits) {
-        this.owners = clinicService;
+    public OwnerController(OwnerRepository owners, VisitRepository visits) {
+        this.owners = owners;
         this.visits = visits;
     }
+
+    // inject PetRepository pets;
+
+    // 1. through constructor
+//    private final PetRepository pets;
+//
+//    public OwnerController(OwnerRepository owners, VisitRepository visits, PetRepository pets) {
+//        this.owners = owners;
+//        this.visits = visits;
+//        this.pets = pets;
+//    }
+
+//    2. through setter
+//    @Autowired
+//    private PetRepository pets;
+//
+//    @Autowired
+//    public void setPets(PetRepository pets) {
+//        this.pets = pets;
+//    }
+
+//    3. through field
+
+//    @Autowired
+//    private PetRepository pets;
 
     @InitBinder
     public void setAllowedFields(WebDataBinder dataBinder) {
